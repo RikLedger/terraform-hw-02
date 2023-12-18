@@ -39,11 +39,11 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 В качестве решения приложите: 
 - скриншот ЛК Yandex Cloud с созданной ВМ,
 
-   >    ![terraform_02_01](jpeg/1-1.jpg)
+   >    ![terraform_02_01](./1-1.jpg)
 
 - скриншот успешного подключения к консоли ВМ через ssh,
 
-   >    ![terraform_02_02](jpeg/2.jpg)
+   >    ![terraform_02_02](./2.jpg)
 
 - ответы на вопросы - *в тексте задания выше*
 ---
@@ -120,7 +120,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ(в файле main.tf): **"netology-develop-platform-db"** ,  cores  = 2, memory = 2, core_fraction = 20. Объявите ее переменные с префиксом **vm_db_** в том же файле('vms_platform.tf').
 3. Примените изменения.
 
-   >    ![terraform_02_02](3.jpg)
+   >    ![terraform_02_02](./3.jpg)
 
 ---
 
@@ -160,7 +160,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
    > name = "${ local.org }-${ local.project }-${ local.instance }-db"
    > ```
    > 3. Пересоздал инфраструктуру. Имена инстансов на месте:
-   >    ![terraform_02_02](jpeg/4.jpg)
+   >    ![terraform_02_02](./4.jpg)
 
 ### Задание 6
 
