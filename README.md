@@ -105,7 +105,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 4. Проверьте terraform plan (изменений быть не должно). 
    > ```bash
-   > oot@debian:/home/baldin/ter-homeworks/02/src# terraform plan
+   > oot@debian:/home/gorbachev/ter-homeworks/02/src# terraform plan
    > yandex_vpc_network.develop: Refreshing state... [id=enp5sviqjetfu9buhd22]
    > yandex_vpc_subnet.develop: Refreshing state... [id=e9brln1338q1s5hokufh]
    > yandex_compute_instance.platform: Refreshing state... [id=fhm23msti5eq166tcipo]
