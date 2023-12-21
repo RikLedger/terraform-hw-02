@@ -40,7 +40,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 Исправленный блок ресурса выглядит следующим образом:
 
-![img_1.png](IMG/img_1.png)
+![img_1.png](Scrin/img_1.png)
 
 5. Параметр ```preemptible = true``` применяется в том случае, если нужно сделать виртуальную машину прерываемой, то есть возможность остановки ВМ в любой момент. Применятся если с момента запуска машины прошло 24 часа либо возникает нехватка ресурсов для запуска ВМ. Прерываемые ВМ не обеспечивают отказоустойчивость.
 
@@ -48,22 +48,22 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 Виртуальная машина успешно создана:
 
-![img_2.png](IMG/img_2.png)
+![img_2.png](Scrin/img_2.png)
 
-![img_3.png](IMG/img_3.png)
+![img_3.png](Scrin/img_3.png)
 
 Подключение по протоколу SSH работает:
 
-![img_4.png](IMG/img_4.png)
+![img_4.png](Scrin/img_4.png)
 
 
 - ЛК Yandex Cloud с созданной ВМ,
 
-   >    ![terraform_02_01](./1-1.jpg)
+   >    ![img_4.2.png](Scrin/img_4.2.png)
 
 - скриншот успешного подключения к консоли ВМ через ssh,
 
-   >    ![terraform_02_02](./2.jpg)
+   >    ![img_4.3.png](Scrin/img_4.3.png)
 
 ---
 
@@ -80,15 +80,15 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 2. Заменил хардкод-значения для ресурсов yandex_compute_image и yandex_compute_instance с добавлением префикса ***vm_web_***:
 
-![img_5.png](IMG/img_5.png)
+![img_5.png](Scrin/img_5.png)
 
 3. Объявил переменные в файле variables.tf:
 
-![img_6.png](IMG/img_6.png)
+![img_6.png](Scrin/img_6.png)
 
 4. Выполнил ```terraform plan```, появилось сообщение о том, что terraform не нашел отличий от действующей инфраструктуры:
 
-![img.png](IMG/img_7.png)
+![img.png](Scrin/img_7.png)
 
    
 ### Задание 3
@@ -101,20 +101,20 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 1. Создал в корне проекта файл 'vms_platform.tf'. Перенес в него все переменные первой ВМ:
 
-![img_8.png](IMG/img_8.png)
+![img_8.png](Scrin/img_8.png)
 
 2. В блоке ресурса создал вторую ВМ с указанными параметрами и объявил её переменные с префиксом ***vm_db_*** в файле vms_platform.tf:
 
-![img_9.png](IMG/img_9.png)
+![img_9.png](Scrin/img_9.png)
 
-![img_10.png](IMG/img_10.png)
+![img_10.png](Scrin/img_10.png)
 
 3. Применяю конфигурацию, вносится изменение в текущую инфраструктуру, создается еще одна виртуальная машина:
 
-![img_11.png](IMG/img_11.png)
+![img_11.png](Scrin/img_11.png)
 
-![img_12.png](IMG/img_12.png)
-   >    ![terraform_02_02](./3.jpg)
+![img_12.png](Scrin/img_12.png)
+   >    ![img_12.2.png](img_12.2.png)
 
 ---
 
@@ -129,11 +129,11 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 1. Объявил в outputs.tf output типа map, получился следующий output:
 
-![img_13.png](IMG/img_13.png)
+![img_13.png](Scrin/img_13.png)
 
 2. Применил изменения,  ```terraform output``` показал следующее:
 
-![img.png](IMG/img_14.png)
+![img.png](Scrin/img_14.png)
 
 ### Задание 5
 
@@ -145,17 +145,17 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 1. В файле locals.tf применил интерполяцию, в одном блоке описал имена ВМ:
 
-![img_15.png](IMG/img_15.png)
+![img_15.png](Scrin/img_15.png)
 
 2. Закомментировал старые variables с именами, в main сослался на созданный local:
 
-![img_16.png](IMG/img_16.png)
+![img_16.png](Scrin/img_16.png)
 
-![img_17.png](IMG/img_17.png)
+![img_17.png](Scrin/img_17.png)
 
 3. Применил изменения.
    > 3. Пересоздал инфраструктуру. Имена инстансов на месте:
-   >    ![terraform_02_02](./4.jpg)
+   >    ![img_17.2.png](img_17.2.png)
 
 ### Задание 6
 
@@ -168,25 +168,25 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 1. Описываю переменные ".._cores",".._memory",".._core_fraction" в vms_platform.tf:
 
-![img_18.png](IMG/img_18.png)
+![img_18.png](Scrin/img_18.png)
 
 В main.tf в блоке resources применяю описанные выше переменные:
 
-![img_19.png](IMG/img_19.png)
+![img_19.png](Scrin/img_19.png)
 
-![img_20.png](IMG/img_20.png)
+![img_20.png](Scrin/img_20.png)
 
 2. Для блока metadata описываю переменные:
 
-![img_21.png](IMG/img_21.png)
+![img_21.png](Scrin/img_21.png)
 
 В main.tf в блоке resources применяю описанные выше переменные:
 
-![img_22.png](IMG/img_22.png)
+![img_22.png](Scrin/img_22.png)
 
 3. Нашел и удалил неиспользуемые переменные.
 
 4. Команда ```terraform plan``` изменение не выявила:
 
-![img_23.png](IMG/img_23.png)
+![img_23.png](Scrin/img_23.png)
 
