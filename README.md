@@ -148,8 +148,9 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 ![img_17.png](Scrin/img_17.png)
 
 3. Применил изменения.
-   > 3. Пересоздал инфраструктуру. Имена инстансов на месте:
-   >    ![img_17.2.png](Scrin/img_17.2.png)
+Пересоздал инфраструктуру. Имена инстансов на месте:
+
+![img_17.2.png](Scrin/img_17.2.png)
 
 ### Задание 6
 
