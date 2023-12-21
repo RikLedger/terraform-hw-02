@@ -50,8 +50,6 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 ![img_2.png](Scrin/img_2.png)
 
-![img_3.png](Scrin/img_3.png)
-
 Подключение по протоколу SSH работает:
 
 ![img_4.png](Scrin/img_4.png)
@@ -61,9 +59,6 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
    >    ![img_4.2.png](Scrin/img_4.2.png)
 
-- скриншот успешного подключения к консоли ВМ через ssh,
-
-   >    ![img_4.3.png](Scrin/img_4.3.png)
 
 ---
 
