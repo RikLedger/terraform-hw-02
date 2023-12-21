@@ -56,8 +56,8 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 ![img_4.png](IMG/img_4.png)
 
-В качестве решения приложите: 
-- скриншот ЛК Yandex Cloud с созданной ВМ,
+
+- ЛК Yandex Cloud с созданной ВМ,
 
    >    ![terraform_02_01](./1-1.jpg)
 
@@ -65,81 +65,55 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
    >    ![terraform_02_02](./2.jpg)
 
-- ответы на вопросы - *в тексте задания выше*
 ---
 
 ### Задание 2
 
 1. Изучите файлы проекта.
-2. Замените все "хардкод" **значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**.
-   > ```bash
-   >  data "yandex_compute_image" "ubuntu" {
-   >    family = var.vm_web_image_name
-   >    }
-   >    
-   >    resource "yandex_compute_instance" "platform" {
-   >      name        = var.vm_web_instance_name
-   >      platform_id = "standard-v1"
-   >      resources {
-   >      cores         = var.vm_web_cores
-   >      memory        = var.vm_web_memory
-   >      core_fraction = var.vm_web_core_fraction  
-   >      }
-   >      ```
-3. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
-   > ```bash
-   > ### yandex_compute_image vars
-   > 
-   > variable "vm_web_image_name" {
-   >   type        = string
-   >   default     = "ubuntu-2004-lts"
-   >   description = "release_name_of_image"
-   > }
-   > 
-   > ### yandex_compute_instance vars
-   > 
-   > variable "vm_web_instance_name" {
-   >   type        = string
-   >   default     = "netology-develop-platform-web"
-   >   description = "name_of_instance"
-   > }
-   > 
-   > variable "vm_web_cores" {
-   >   type        = number
-   >   default     = 2
-   >   description = "count_of_cores_vm"
-   > }
-   > 
-   > variable "vm_web_memory" {
-   >   type        = number
-   >   default     = 2
-   >   description = "count_of_memory_vm"
-   > }
-   > 
-   > variable "vm_web_core_fraction" {
-   >   type        = number
-   >   default     = 100
-   >   description = "core_fraction_of_vm"
-   > }
-   > ```
+2. Замените все хардкод-**значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**.
+2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
+3. Проверьте terraform plan. Изменений быть не должно.
 
-4. Проверьте terraform plan (изменений быть не должно). 
-   > ```bash
-   > oot@debian:/home/gorbachev/ter-homeworks/02/src# terraform plan
-   > yandex_vpc_network.develop: Refreshing state... [id=enp5sviqjetfu9buhd22]
-   > yandex_vpc_subnet.develop: Refreshing state... [id=e9brln1338q1s5hokufh]
-   > yandex_compute_instance.platform: Refreshing state... [id=fhm23msti5eq166tcipo]
-   > 
-   > Note: Objects have changed outside of Terraform
-   > ```
-   ---
+### Решение 2
+
+1. Изучил файлы проекта. Проект разбит на отдельные файлы, описывающие ядро проекта, сетевую часть, описание общих переменных, блок провайдера, блок вывода информации.
+
+2. Заменил хардкод-значения для ресурсов yandex_compute_image и yandex_compute_instance с добавлением префикса ***vm_web_***:
+
+![img_5.png](IMG/img_5.png)
+
+3. Объявил переменные в файле variables.tf:
+
+![img_6.png](IMG/img_6.png)
+
+4. Выполнил ```terraform plan```, появилось сообщение о том, что terraform не нашел отличий от действующей инфраструктуры:
+
+![img.png](IMG/img_7.png)
+
    
 ### Задание 3
 
-1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
-2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ(в файле main.tf): **"netology-develop-platform-db"** ,  cores  = 2, memory = 2, core_fraction = 20. Объявите ее переменные с префиксом **vm_db_** в том же файле('vms_platform.tf').
+1. Создайте в корне проекта файл 'vms_platform.tf'. Перенесите в него все переменные первой ВМ.
+2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  cores  = 2, memory = 2, core_fraction = 20. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').
 3. Примените изменения.
 
+### Решение 3
+
+1. Создал в корне проекта файл 'vms_platform.tf'. Перенес в него все переменные первой ВМ:
+
+![img_8.png](IMG/img_8.png)
+
+2. В блоке ресурса создал вторую ВМ с указанными параметрами и объявил её переменные с префиксом ***vm_db_*** в файле vms_platform.tf:
+
+![img_9.png](IMG/img_9.png)
+
+![img_10.png](IMG/img_10.png)
+
+3. Применяю конфигурацию, вносится изменение в текущую инфраструктуру, создается еще одна виртуальная машина:
+
+![img_11.png](IMG/img_11.png)
+
+![img_12.png](IMG/img_12.png)
    >    ![terraform_02_02](./3.jpg)
 
 ---
@@ -149,96 +123,70 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 1. Объявите в файле outputs.tf output типа map, содержащий { instance_name = external_ip } для каждой из ВМ.
 2. Примените изменения.
 
-В качестве решения приложите вывод значений ip-адресов команды ```terraform output```
+В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
-   > ```bash
-   > root@debian:/home/gorbachev/ter-homeworks/02/src# terraform output
-   > db_instance_public_ip = "158.160.39.211"
-   > web_instance_public_ip = "158.160.104.47"
-   > ```
+### Решение 4
+
+1. Объявил в outputs.tf output типа map, получился следующий output:
+
+![img_13.png](IMG/img_13.png)
+
+2. Применил изменения,  ```terraform output``` показал следующее:
+
+![img.png](IMG/img_14.png)
 
 ### Задание 5
 
 1. В файле locals.tf опишите в **одном** local-блоке имя каждой ВМ, используйте интерполяцию ${..} с несколькими переменными по примеру из лекции.
-2. Замените переменные с именами ВМ из файла variables.tf на созданные вами local переменные.
+2. Замените переменные с именами ВМ из файла variables.tf на созданные вами local-переменные.
 3. Примените изменения.
 
-   > *Если я правильно понял задание, то:*
-   > 1. Заполнил **locals.tf**
-   > ```bash
-   > locals {
-   >   org      = "netology"
-   >   project  = "develop"
-   >   instance = "platform"
-   > }
-   > ```
-   > 2. Указал имён ВМ при помощи local переменных (причем указывал я их уже в `main.tf`, так как в `variables` переменные не указать)
-   > ```bash
-   > name = "${ local.org }-${ local.project }-${ local.instance }-web"
-   >   ```
-   >   ```bash
-   > name = "${ local.org }-${ local.project }-${ local.instance }-db"
-   > ```
+### Решение 5
+
+1. В файле locals.tf применил интерполяцию, в одном блоке описал имена ВМ:
+
+![img_15.png](IMG/img_15.png)
+
+2. Закомментировал старые variables с именами, в main сослался на созданный local:
+
+![img_16.png](IMG/img_16.png)
+
+![img_17.png](IMG/img_17.png)
+
+3. Применил изменения.
    > 3. Пересоздал инфраструктуру. Имена инстансов на месте:
    >    ![terraform_02_02](./4.jpg)
 
 ### Задание 6
 
-1. Вместо использования 3-х переменных  ".._cores",".._memory",".._core_fraction" в блоке  resources {...}, объедените их в переменные типа **map** с именами "vm_web_resources" и "vm_db_resources".
-
-   > *Переменные типа `map`:*
-   > ```bash
-   > variable vm_db_resources {
-   >   type = map
-   >   default = {
-   >     cores = 2
-   >     memory = 4
-   >     core_fraction = 20
-   >   }
-   > }
-   > 
-   > variable vm_web_resources {
-   >   type = map
-   >   default = {
-   >     cores = 2
-   >     memory = 4
-   >     core_fraction = 100
-   >   }
-   > }
-   > ```
-   > 
-   > *Новый вид блока `resources` (на примере `vm_db_`):*
-   > ```bash
-   >   resources {
-   >     cores         = var.vm_db_resources["cores"]
-   >     memory        = var.vm_db_resources["memory"]
-   >     core_fraction = var.vm_db_resources["core_fraction"]
-   > ```    
-
-2. Так же поступите с блоком **metadata {serial-port-enable, ssh-keys}**, эта переменная должна быть общая для всех ваших ВМ.
-
-   > *В `variables.tf` прямо указал данные для авторизации на ВМ по ssh:*
-   > ```bash
-   > variable auth-ssh {
-   >   type = map
-   >   default = {
-   >    serial-port-enable = 1 
-   >    ssh-keys = "ubuntu:ssh-rsa AAAAB3.................AqNVz gorbachev@debian"
-   >   }
-   > }
-   > ```
-   > *A в `main.tf` сослался на переменную `metadata = var.auth-ssh`*
-
+1. Вместо использования трёх переменных  ".._cores",".._memory",".._core_fraction" в блоке  resources {...}, объедините их в переменные типа **map** с именами "vm_web_resources" и "vm_db_resources". В качестве продвинутой практики попробуйте создать одну map-переменную **vms_resources** и уже внутри неё конфиги обеих ВМ — вложенный map.
+2. Также поступите с блоком **metadata {serial-port-enable, ssh-keys}**, эта переменная должна быть общая для всех ваших ВМ.
 3. Найдите и удалите все более не используемые переменные проекта.
-4. Проверьте terraform plan (изменений быть не должно).
+4. Проверьте terraform plan. Изменений быть не должно.
 
-   > *Результат `terraform plan`:*
-   > ```bash
-   > root@debian:/home/gorbachev/ter-homeworks/02/src# terraform plan
-   > yandex_vpc_network.develop: Refreshing state... [id=enpj1umoldup8i9rplsk]
-   > yandex_vpc_subnet.develop: Refreshing state... [id=e9b2lb0j25ug7g5gitjm]
-   > yandex_compute_instance.platform-db: Refreshing state... [id=fhmjigjf75lm3u30mvfi]
-   > yandex_compute_instance.platform: Refreshing state... [id=fhm0q0d1v5rivvjfpbg5]
-   > 
-   > Note: Objects have changed outside of Terraform
-   > ```
+### Решение 6
+
+1. Описываю переменные ".._cores",".._memory",".._core_fraction" в vms_platform.tf:
+
+![img_18.png](IMG/img_18.png)
+
+В main.tf в блоке resources применяю описанные выше переменные:
+
+![img_19.png](IMG/img_19.png)
+
+![img_20.png](IMG/img_20.png)
+
+2. Для блока metadata описываю переменные:
+
+![img_21.png](IMG/img_21.png)
+
+В main.tf в блоке resources применяю описанные выше переменные:
+
+![img_22.png](IMG/img_22.png)
+
+3. Нашел и удалил неиспользуемые переменные.
+
+4. Команда ```terraform plan``` изменение не выявила:
+
+![img_23.png](IMG/img_23.png)
+
