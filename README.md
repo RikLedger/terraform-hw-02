@@ -108,7 +108,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 ![img_11.png](Scrin/img_11.png)
 
-![img_12.2.png](img_12.2.png)
+![img_12.2.png](Scrin/img_12.2.png)
 
 ---
 
