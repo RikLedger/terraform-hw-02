@@ -30,3 +30,21 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network & subnet name"
 }
+
+variable "netology-develop-platform" {
+  type        = string
+  default     = "${var.project}"
+  description = "The name of the project"
+}
+
+variable "env_web" {
+  type        = string
+  default     = "${var.env_web}"
+  description = "The name of the web environment"
+}
+
+variable "env_db" {
+  type        = string
+  default     = "${var.env_db}"
+  description = "The name of the database environment"
+}
