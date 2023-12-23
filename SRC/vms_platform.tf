@@ -38,7 +38,7 @@ variable "common_metadata" {
   type        = map(string)
   default     = {
     serial-port-enable = "1"
-    ssh-keys          = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjKG3j7XxY3d7HWOm+GapAnyhBQHDG2niTOEtNwpq2G demonium@Debian"
+    ssh-keys          = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjKG3j7XxY3d7HWOm+GapAnyhBQHDG2niTOEtNwpq2G gorbachev@Debian"
   }
 }
 
