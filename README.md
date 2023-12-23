@@ -137,7 +137,7 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 ### Решение 5
 
-Добавим данные в файл [locals.tf](src%2Flocals.tf) и [variables.tf](src%2Fvariables.tf):
+Добавим данные в файл [locals.tf](SRC%2Flocals.tf) и [variables.tf](SRC%2Fvariables.tf):
 ```
 locals {
   vm_web_instance_name = "${local.project}-${local.env_web}"
