@@ -137,17 +137,35 @@ https://console.cloud.yandex.ru/folders/<ваш cloud_id>/vpc/security-groups.
 
 ### Решение 5
 
-1. В файле locals.tf применил интерполяцию, в одном блоке описал имена ВМ:
+Добавим данные в файл [locals.tf](src%2Flocals.tf) и [variables.tf](src%2Fvariables.tf):
+```
+locals {
+  vm_web_instance_name = "${local.project}-${local.env_web}"
+  vm_db_instance_name = "${local.project}-${local.env_db}"
+}
 
-![img_15.png](Scrin/img_15.png)
+}
+```
+```
+variable "netology-develop-platform" {
+  default     = "netology"
+}
 
-2. Закомментировал старые variables с именами, в main сослался на созданный local:
+variable "env" {
+  default     = "develop"
+}
 
-![img_16.png](Scrin/img_16.png)
+variable "project" {
+  default     = "platform"
+}
 
-![img_17.png](Scrin/img_17.png)
+variable "role" {
+   default = ["web", "db"]
+}
+```
 
-3. Применил изменения.
+Применил изменения.
+
 Пересоздал инфраструктуру. Имена инстансов на месте:
 
 ![img_17.2.png](Scrin/img_17.2.png)
