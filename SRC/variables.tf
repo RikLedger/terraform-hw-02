@@ -32,19 +32,17 @@ variable "vpc_name" {
 }
 
 variable "netology-develop-platform" {
-  type        = string
-  default     = "${var.project}"
-  description = "The name of the project"
+  default     = "netology"
 }
 
-variable "env_web" {
-  type        = string
-  default     = "${var.env_web}"
-  description = "The name of the web environment"
+variable "env" {
+  default     = "develop"
 }
 
-variable "env_db" {
-  type        = string
-  default     = "${var.env_db}"
-  description = "The name of the database environment"
+variable "project" {
+  default     = "platform"
+}
+
+variable "role" {
+   default = ["web", "db"]
 }
